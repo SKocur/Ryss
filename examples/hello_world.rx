@@ -1,2 +1,2 @@
-init string 'Hello World'
-log string
+init firstVariable 'Hello World'
+log firstVariable
