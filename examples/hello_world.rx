@@ -1,1 +1,2 @@
-log 'Hello World!'
+init string 'Hello World'
+log string

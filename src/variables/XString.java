@@ -8,4 +8,8 @@ public class XString extends Variable {
 		this.name = name;
 		this.value = value;
 	}
+
+	public String getValue(){
+		return this.value;
+	}
 }

@@ -1,15 +1,23 @@
 package functions;
 
+import variables.XString;
+
 public class Log {
-
-	//TODO: Overload execute(XString variable)
-
 	public static void execute(String text){
 		try{
 			if(isValid(text))
 				System.out.println(text.replace("\'", ""));
 		} catch(SyntaxError e){
 			System.out.println("Syntax error: " + text);
+		}
+	}
+
+	public static void execute(XString variable){
+		try{
+			if(isValid(variable.getValue()))
+				System.out.println(variable.getValue().replace("\'", ""));
+		} catch(SyntaxError e){
+			System.out.println("Syntax error: " + variable.getValue());
 		}
 	}
 
