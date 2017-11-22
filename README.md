@@ -1,2 +1,2 @@
 # Ryss
-Ryss is scripting language with syntax inspired on Assembly.
+Ryss is scripting language with syntax inspired by Assembly.
