@@ -1,2 +1,2 @@
-# Roar
-Roar is scripting language with syntax inspired on Assembly.
+# Ryss
+Ryss is scripting language with syntax inspired on Assembly.
