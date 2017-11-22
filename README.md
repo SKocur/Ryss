@@ -12,4 +12,4 @@ log 'Hello World!'
 init firstVariable 'Hello World!'
 log firstVariable
 ```
-Output in both case is the same ```Hello World!```
+Output in both cases is the same ```Hello World!```
