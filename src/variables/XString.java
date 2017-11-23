@@ -1,8 +1,13 @@
 package variables;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class XString extends Variable {
 	String name;
 	String value;
+
+	public static Map<String, XString> xStrings = new HashMap<String, XString>();
 
 	public XString(String name, String value){
 		this.name = name;
