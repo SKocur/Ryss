@@ -1,5 +1,6 @@
 package functions;
 
+import exceptions.SyntaxError;
 import variables.XString;
 
 public class Log {

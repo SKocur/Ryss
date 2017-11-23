@@ -1,8 +1,20 @@
 package variables;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import exceptions.InvalidVariableNameError;
+
 public class Variable {
 	public Variable(){
 
+	}
+
+	public static boolean isValidVariableName(String name) throws InvalidVariableNameError{
+		Matcher m = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE).matcher(name);
+
+		if(!m.find())
+			return true;
+		throw new InvalidVariableNameError();
 	}
 
 	public static Variables recognize(String value){

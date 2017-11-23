@@ -2,6 +2,7 @@ import interfaces.IInterpreter;
 import java.util.*;
 import functions.Log;
 import exceptions.UnknownExpressionException;
+import exceptions.InvalidVariableNameError;
 import variables.XString;
 import variables.Variable;
 import variables.Variables;
@@ -22,21 +23,27 @@ public class Interpreter implements IInterpreter {
 
 			switch(function){
 				case "log":
-					if(xStrings.get(functionParams) != null){
+					if(xStrings.get(functionParams) != null)
 						Log.execute(xStrings.get(functionParams));
-					}
 					else
 						Log.execute(functionParams);
 					break;
 				case "init":
 					String[] variable = expression.split(" ", 3);
-					switch(Variable.recognize(variable[2])){
-						case XString:
-							XString xString = new XString(variable[1], variable[2]);
-							xStrings.put(variable[1], xString);
-							break;
-						case XInteger:
-							break;
+					try {
+						if(Variable.isValidVariableName(variable[1])){
+							switch(Variable.recognize(variable[2])){
+								case XString:
+									XString xString = new XString(variable[1], variable[2]);
+									xStrings.put(variable[1], xString);
+									break;
+								case XInteger:
+									break;
+							}
+						}
+					} catch(InvalidVariableNameError error){
+						System.out.println("Invalid variable name: " + variable[1]);
+						return;
 					}
 					break;
 				default:
