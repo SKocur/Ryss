@@ -1,2 +1,5 @@
 init firstVariable 'Hello World'
+
+// Below statement prints to console
+// value of firstVariable
 log firstVariable
