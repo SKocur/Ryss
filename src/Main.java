@@ -11,7 +11,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		try {
-			File file = new File("examples/hello_world.rx");
+			File file = new File(args[0]);
 			Scanner scanner = new Scanner(file);
 
 			while(scanner.hasNext()) {
