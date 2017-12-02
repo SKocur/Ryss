@@ -1,0 +1,14 @@
+//Example source code with usage of integers
+
+//Variable initialization
+init firstNumber 3
+init secondNumber 10
+
+//Addition of two numbers
+add firstNumber secondNumber
+
+//Output result
+log firstNumber
+
+add firstNumber 7
+log firstNumber

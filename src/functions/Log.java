@@ -1,30 +1,12 @@
 package functions;
 
-import exceptions.SyntaxError;
-import variables.XString;
+import variables.Variable;
 
-public class Log {
-	public static void execute(String text){
-		try{
-			if(isValid(text))
-				System.out.println(text.replace("\'", ""));
-		} catch(SyntaxError e){
-			System.out.println("Syntax error: " + text);
-		}
-	}
-
-	public static void execute(XString variable){
-		try{
-			if(isValid(variable.getValue()))
-				System.out.println(variable.getValue().replace("\'", ""));
-		} catch(SyntaxError e){
-			System.out.println("Syntax error: " + variable.getValue());
-		}
-	}
-
-	private static boolean isValid(String text) throws SyntaxError {
-		if((text.startsWith("\"") && text.endsWith("\"")) || (text.startsWith("\'") && text.endsWith("\'")))
-			return true;
-		throw new SyntaxError("Syntax error: " + text);
+public class Log extends Variable {
+	public static void execute(String text) {
+		if(isValidStringValue(text))
+			System.out.println(text.replace("\'", ""));
+		else if(isValidIntegerValue(text))
+			System.out.println(Integer.parseInt(text));
 	}
 }

@@ -3,7 +3,7 @@ package variables;
 import java.util.HashMap;
 import java.util.Map;
 
-public class XString extends Variable {
+public class XString {
 	String name;
 	String value;
 
