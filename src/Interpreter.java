@@ -1,5 +1,6 @@
 import interfaces.IInterpreter;
 import java.util.*;
+import javax.swing.JOptionPane;
 
 import functions.Init;
 import functions.Log;
@@ -24,6 +25,9 @@ public class Interpreter implements IInterpreter {
 						break;
 					case "init":
 						Init.initializeVariable(expression);
+						break;
+					case "MsgBox":
+						JOptionPane.showMessageDialog(null, functionParams);
 						break;
 					default:
 						throw new UnknownExpressionException();
