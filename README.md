@@ -16,6 +16,6 @@ log firstVariable
 ```
 Output in both cases is the same ```Hello World!```
 
-### Documentation is available on[JavaDoc](https://skocur.github.io/Ryss/)
+### Documentation is available on: [JavaDoc](https://skocur.github.io/Ryss/)
 
 [![forthebadge](http://forthebadge.com/badges/gluten-free.svg)](https://github.com/SKocur/Ryss) [![forthebadge](http://forthebadge.com/badges/powered-by-jeffs-keyboard.svg)](https://github.com/SKocur/Ryss)
