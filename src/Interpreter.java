@@ -10,10 +10,24 @@ import exceptions.UnknownExpressionException;
 import variables.XInteger;
 import variables.XString;
 
+/**
+ * <h1>Interpreter</h1>
+ * This is class where all magic take place.
+ *
+ * @author Szymon Kocur
+ */
+
 public class Interpreter implements IInterpreter {
+
+	/**
+	 * This is method which analyze .rx file for known expressions and then execute them.
+	 *
+	 * @param expressions It is list of expressions from the file.
+	 * @throws UnknownExpressionException When scanner can't recognize expression.
+	 * @see UnknownExpressionException
+	 */
 	@Override
 	public void scan(List<String> expressions) throws UnknownExpressionException {
-
 		for(String expression : expressions) {
 			if(!expression.startsWith("//") && !expression.isEmpty()) {
 				String function = expression.substring(0, expression.indexOf(' '));
@@ -21,7 +35,7 @@ public class Interpreter implements IInterpreter {
 
 				switch(function) {
 					case "log":
-						if (XString.xStrings.get(functionParams) != null)
+						if(XString.xStrings.get(functionParams) != null)
 							Log.execute(XString.xStrings.get(functionParams).getValue());
 						else if(XInteger.xIntegers.get(functionParams) != null)
 							Log.execute("" + XInteger.xIntegers.get(functionParams).getValue());
