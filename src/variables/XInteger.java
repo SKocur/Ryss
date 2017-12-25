@@ -8,40 +8,37 @@ import java.util.Map;
  * It is class for storing integer values.
  *
  * @author Szymon Kocur
- *
+ * @see Variable
  */
-public class XInteger {
-	String name;
-	int value;
+public class XInteger extends Variable {
 
 	public static Map<String, XInteger> xIntegers = new HashMap<String, XInteger>();
 
 	/**
 	 * It is constructor which makes variable of integer type.
 	 *
-	 * @param name String - variable's name
-	 * @param value int - variable's value
+	 * @param name String - variable name
+	 * @param value int - variable value
 	 */
 	public XInteger(String name, int value) {
-		this.name = name;
-		this.value = value;
+		super(name, value);
 	}
 
 	/**
 	 * It returns name of variable.
 	 *
-	 * @return name String - variable's name
+	 * @return name String - variable name
 	 */
 	public String getName() {
-		return this.name;
+		return super.name;
 	}
 
 	/**
 	 * It returns value of variable.
 	 *
-	 * @return value int - variable's value
+	 * @return value int - variable value
 	 */
 	public int getValue() {
-		return this.value;
+		return (Integer) super.value;
 	}
 }
