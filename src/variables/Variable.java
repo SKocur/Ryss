@@ -32,7 +32,7 @@ public class Variable {
 		//TODO: Repair regex (unit tests failed)
 		Matcher m = Pattern.compile("[^a-z0-9]", Pattern.CASE_INSENSITIVE).matcher(name);
 
-		return !m.find() && name.matches("^[a-zA-Z]\\w*$") ? true : false;
+		return !m.find() && name.matches("^[a-zA-Z]\\w*$");
 	}
 
 	/**
@@ -57,7 +57,7 @@ public class Variable {
 	 * @return boolean
 	 */
 	public static boolean isValidStringValue(String text) {
-		return (text.startsWith("\"") && text.endsWith("\"")) || (text.startsWith("\'") && text.endsWith("\'")) ? true : false;
+		return (text.startsWith("\"") && text.endsWith("\"")) || (text.startsWith("\'") && text.endsWith("\'"));
 	}
 
 	/**
@@ -67,6 +67,6 @@ public class Variable {
 	 * @return boolean
 	 */
 	public static boolean isValidIntegerValue(String text) {
-		return (Object) Integer.parseInt(text) instanceof Integer ? true : false;
+		return (Object) Integer.parseInt(text) instanceof Integer;
 	}
 }

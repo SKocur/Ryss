@@ -5,7 +5,7 @@ import java.util.Map;
 
 /**
  * <h1>XString</h1>
- * It is class for storing Strings values.
+ * This is class for storing Strings values.
  *
  * @author Szymon Kocur
  *
