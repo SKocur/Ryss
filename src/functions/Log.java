@@ -1,6 +1,7 @@
 package functions;
 
-import variables.Variable;
+import static variables.Variable.isValidStringValue;
+import static variables.Variable.isValidIntegerValue;
 
 /**
  * <h1>Log</h1>
@@ -9,7 +10,7 @@ import variables.Variable;
  * @author Szymon Kocur
  *
  */
-public class Log extends Variable {
+public class Log {
 
 	/**
 	 * It prints String or integer value to the console.

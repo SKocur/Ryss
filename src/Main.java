@@ -36,7 +36,9 @@ public class Main {
 
 			scanner.close();
 
-			Interpreter interpreter = new Interpreter();
+			Interpreter interpreter = new Interpreter.InterpreterBuilder()
+					.commentPattern("//")
+					.build();
 			interpreter.scan(expressions);
 		} catch (FileNotFoundException e) {
 			System.out.println("Cannot find .rx file with given name");

@@ -1,9 +1,10 @@
 package functions;
 
-import exceptions.InvalidVariableNameError;
-import variables.Variable;
 import variables.XInteger;
 import variables.XString;
+
+import static variables.Variable.isValidVariableName;
+import static variables.Variable.recognize;
 
 /**
  * <h1>Init</h1>
@@ -12,7 +13,7 @@ import variables.XString;
  * @author Szymon Kocur
  *
  */
-public class Init extends Variable {
+public class Init {
 
 	/**
 	 * It splits expression and then initialize variables by putting them to correct lists:
@@ -25,8 +26,8 @@ public class Init extends Variable {
 	 */
 	public static void initializeVariable(String expression) {
 		String[] variable = expression.split(" ", 3);
-		try {
-			if(isValidVariableName(variable[1])) {
+		if(isValidVariableName(variable[1])) {
+			if(!isDuplicated(variable[1])){
 				switch(recognize(variable[2])) {
 					case XString:
 						XString xString = new XString(variable[1], variable[2]);
@@ -37,10 +38,26 @@ public class Init extends Variable {
 						XInteger.xIntegers.put(variable[1], xInteger);
 						break;
 				}
+			} else {
+				System.out.println("Duplicated variable name: " + variable[1]);
+			    System.exit(1);
 			}
-		} catch(InvalidVariableNameError error) {
+		} else {
 			System.out.println("Invalid variable name: " + variable[1]);
 		    System.exit(1);
 		}
+	}
+
+	/**
+	 * Checks if variable is duplicated in the file.
+	 *
+	 * @param variableName Name of the variable
+	 * @return boolean
+	 */
+	private static boolean isDuplicated(String variableName){
+		Object ob1 = XString.xStrings.get(variableName);
+		Object ob2 = XInteger.xIntegers.get(variableName);
+
+		return ob1 != null && ob2 != null;
 	}
 }

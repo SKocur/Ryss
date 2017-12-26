@@ -14,26 +14,31 @@ import exceptions.InvalidVariableNameError;
 
 public class Variable {
 
-	/**
-	 * It checks is variable name correct.
-	 *
-	 * @param name String - variable's name
-	 * @return boolean
-	 * @throws InvalidVariableNameError When variable's name is not correct.
-	 * @see InvalidVariableNameError
-	 */
-	public static boolean isValidVariableName(String name) throws InvalidVariableNameError {
-		Matcher m = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE).matcher(name);
+	protected String name;
+	protected Object value;
 
-		if(!m.find())
-			return true;
-		throw new InvalidVariableNameError();
+	protected Variable(String name, Object value){
+		this.name = name;
+		this.value = value;
+	}
+
+	/**
+	 * It checks if variable name is correct.
+	 *
+	 * @param name String - variable name
+	 * @return boolean
+	 */
+	public static boolean isValidVariableName(String name) {
+		//TODO: Repair regex (unit tests failed)
+		Matcher m = Pattern.compile("[^a-z0-9]", Pattern.CASE_INSENSITIVE).matcher(name);
+
+		return !m.find() && name.matches("^[a-zA-Z]\\w*$");
 	}
 
 	/**
 	 * It checks what is the type of variable.
 	 *
-	 * @param value String - variable's value
+	 * @param value String - variable value
 	 * @return Variables Type of variable
 	 * @see Variables
 	 */
@@ -46,27 +51,22 @@ public class Variable {
 	}
 
 	/**
-	 * It checks if variable's text value is correct.
+	 * It checks if variable text value is correct.
 	 *
 	 * @param text String - text
 	 * @return boolean
 	 */
-	protected static boolean isValidStringValue(String text) {
-		if((text.startsWith("\"") && text.endsWith("\"")) || (text.startsWith("\'") && text.endsWith("\'")))
-			return true;
-		return false;
+	public static boolean isValidStringValue(String text) {
+		return (text.startsWith("\"") && text.endsWith("\"")) || (text.startsWith("\'") && text.endsWith("\'"));
 	}
 
 	/**
-	 * It checks if variable's integer value is correct.
+	 * It checks if variable integer value is correct.
 	 *
 	 * @param text String - number
 	 * @return boolean
 	 */
-	protected static boolean isValidIntegerValue(String text) {
-		Object data = Integer.parseInt(text);
-		if(data instanceof Integer)
-			return true;
-		return false;
+	public static boolean isValidIntegerValue(String text) {
+		return (Object) Integer.parseInt(text) instanceof Integer;
 	}
 }
