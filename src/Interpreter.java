@@ -19,6 +19,12 @@ import variables.XString;
 
 public class Interpreter implements IInterpreter {
 
+	private String commentPattern;
+
+	private Interpreter(String commentPattern) {
+		this.commentPattern = commentPattern;
+	}
+
 	/**
 	 * This is method which analyze .rx file for known expressions and then execute them.
 	 *
@@ -29,7 +35,7 @@ public class Interpreter implements IInterpreter {
 	@Override
 	public void scan(List<String> expressions) throws UnknownExpressionException {
 		for(String expression : expressions) {
-			if(!expression.startsWith("//") && !expression.isEmpty()) {
+			if(!expression.startsWith(commentPattern) && !expression.isEmpty()) {
 				String function = expression.substring(0, expression.indexOf(' '));
 				String functionParams = expression.substring(expression.indexOf(' ') + 1);
 
@@ -64,6 +70,37 @@ public class Interpreter implements IInterpreter {
 						throw new UnknownExpressionException();
 				}
 			}
+		}
+	}
+
+	/**
+	 * <h1>InterpreterBuilder</h1>
+	 * Nested class based on Builder Pattern which allows adding more parameters without cluttering code.
+	 *
+	 * @author Szymon Kocur
+	 * @see Interpreter
+	 */
+	public static class InterpreterBuilder {
+		private String nestedCommentPattern;
+
+		/**
+		 * This method sets pattern for comments. Expression which starts with this pattern will be ignored.
+		 *
+		 * @param commentPattern
+		 * @return InterpreterBuilder
+		 */
+		public InterpreterBuilder commentPattern(String commentPattern) {
+			this.nestedCommentPattern = commentPattern;
+			return this;
+		}
+
+		/**
+		 * It returns object of Interpreter type.
+		 *
+		 * @return Interpreter
+		 */
+		public Interpreter build() {
+			return new Interpreter(nestedCommentPattern);
 		}
 	}
 }

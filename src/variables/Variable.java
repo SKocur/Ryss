@@ -23,20 +23,16 @@ public class Variable {
 	}
 
 	/**
-	 * It checks is variable name correct.
+	 * It checks if variable name is correct.
 	 *
 	 * @param name String - variable name
 	 * @return boolean
 	 */
 	public static boolean isValidVariableName(String name) {
-
 		//TODO: Repair regex (unit tests failed)
-
 		Matcher m = Pattern.compile("[^a-z0-9]", Pattern.CASE_INSENSITIVE).matcher(name);
 
-		if(!m.find() && name.matches("^[a-zA-Z]\\w*$"))
-			return true;
-		return false;
+		return !m.find() && name.matches("^[a-zA-Z]\\w*$") ? true : false;
 	}
 
 	/**
@@ -61,9 +57,7 @@ public class Variable {
 	 * @return boolean
 	 */
 	public static boolean isValidStringValue(String text) {
-		if((text.startsWith("\"") && text.endsWith("\"")) || (text.startsWith("\'") && text.endsWith("\'")))
-			return true;
-		return false;
+		return (text.startsWith("\"") && text.endsWith("\"")) || (text.startsWith("\'") && text.endsWith("\'")) ? true : false;
 	}
 
 	/**
@@ -73,9 +67,6 @@ public class Variable {
 	 * @return boolean
 	 */
 	public static boolean isValidIntegerValue(String text) {
-		Object data = Integer.parseInt(text);
-		if(data instanceof Integer)
-			return true;
-		return false;
+		return (Object) Integer.parseInt(text) instanceof Integer ? true : false;
 	}
 }
