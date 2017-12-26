@@ -58,6 +58,12 @@ public class Init {
 		Object ob1 = XString.xStrings.get(variableName);
 		Object ob2 = XInteger.xIntegers.get(variableName);
 
+<<<<<<< HEAD
 		return ob1 != null && ob2 != null;
+=======
+		if(ob1 == null && ob2 == null)
+			return false;
+		return true;
+>>>>>>> origin/master
 	}
 }

@@ -24,6 +24,12 @@ public class Interpreter {
 		this.commentPattern = commentPattern;
 	}
 
+	private String commentPattern;
+
+	private Interpreter(String commentPattern) {
+		this.commentPattern = commentPattern;
+	}
+
 	/**
 	 * This is method which analyze .rx file for known expressions and then execute them.
 	 *
