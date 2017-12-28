@@ -27,38 +27,18 @@ public class InitTest {
 	}
 
 	@Test
-	public void testInitializeVariable1() {
+	public void testInitializeVariableXString() {
 		Init.initializeVariable(expressionXString);
 		assert(XString.xStrings.get("firstVar") instanceof XString);
-	}
-
-	@Test
-	public void testInitializeVariable2() {
-		Init.initializeVariable(expressionXString);
 		assert(XString.xStrings.get("firstVar").getName().equals(xString.getName()));
-	}
-
-	@Test
-	public void testInitializeVariable3() {
-		Init.initializeVariable(expressionXString);
 		assert(XString.xStrings.get("firstVar").getValue().equals(xString.getValue()));
 	}
 
 	@Test
-	public void testInitializeVariable4() {
+	public void testInitializeVariableXInteger() {
 		Init.initializeVariable(expressionXInteger);
 		assert(XInteger.xIntegers.get("secondVar") instanceof XInteger);
-	}
-
-	@Test
-	public void testInitializeVariable5() {
-		Init.initializeVariable(expressionXInteger);
 		assert(XInteger.xIntegers.get("secondVar").getName().equals(xInteger.getName()));
-	}
-
-	@Test
-	public void testInitializeVariable6() {
-		Init.initializeVariable(expressionXInteger);
 		assert(XInteger.xIntegers.get("secondVar").getValue() == xInteger.getValue());
 	}
 
