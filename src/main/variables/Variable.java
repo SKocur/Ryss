@@ -2,8 +2,8 @@ package main.variables;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import main.exceptions.InvalidVariableNameError;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * <h1>Variable</h1>
@@ -15,12 +15,32 @@ import main.exceptions.InvalidVariableNameError;
 
 public class Variable {
 
+	public static Map<String, Object> xVariables = new HashMap<String, Object>();
+
 	protected String name;
 	protected Object value;
 
-	protected Variable(String name, Object value){
+	public Variable(String name, Object value){
 		this.name = name;
 		this.value = value;
+	}
+
+	/**
+	 * It returns name of variable.
+	 *
+	 * @return name String - variable name
+	 */
+	public String getName() {
+		return this.name;
+	}
+
+	/**
+	 * It returns value of variable.
+	 *
+	 * @return value Object - variable value
+	 */
+	public Object getValue() {
+		return this.value;
 	}
 
 	/**
@@ -34,21 +54,6 @@ public class Variable {
 		Matcher m = Pattern.compile("[^a-z0-9]", Pattern.CASE_INSENSITIVE).matcher(name);
 
 		return !m.find() && name.matches("^[a-zA-Z]\\w*$");
-	}
-
-	/**
-	 * It checks what is the type of variable.
-	 *
-	 * @param value String - variable value
-	 * @return Variables Type of variable
-	 * @see Variables
-	 */
-	public static Variables recognize(String value) {
-		if(isValidStringValue(value))
-			return Variables.XString;
-		else if(isValidIntegerValue(value))
-			return Variables.XInteger;
-		return null;
 	}
 
 	/**

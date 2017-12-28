@@ -3,8 +3,7 @@ package test.functions;
 import org.junit.Test;
 
 import main.functions.Init;
-import main.variables.XInteger;
-import main.variables.XString;
+import main.variables.Variable;
 
 import org.junit.Before;
 import org.junit.After;
@@ -12,39 +11,47 @@ import org.junit.After;
 public class InitTest {
 
 	private String expressionXString;
-	private XString xString;
+	private Variable xString;
 
 	private String expressionXInteger;
-	private XInteger xInteger;
+	private Variable xInteger;
 
 	@Before
 	public void init() {
 		expressionXString = "init firstVar \"Hello World\"";
-		xString = new XString("firstVar", "\"Hello World\"");
+		xString = new Variable("firstVar", "\"Hello World\"");
 
 		expressionXInteger = "init secondVar 2";
-		xInteger = new XInteger("secondVar", 2);
+		xInteger = new Variable("secondVar", 2);
 	}
 
 	@Test
 	public void testInitializeVariableXString() {
 		Init.initializeVariable(expressionXString);
-		assert(XString.xStrings.get("firstVar") instanceof XString);
-		assert(XString.xStrings.get("firstVar").getName().equals(xString.getName()));
-		assert(XString.xStrings.get("firstVar").getValue().equals(xString.getValue()));
+		assert(((Variable) Variable.xVariables.get("firstVar")).getName().equals(xString.getName()));
+		assert(((Variable) Variable.xVariables.get("firstVar")).getValue().equals(xString.getValue()));
 	}
 
 	@Test
 	public void testInitializeVariableXInteger() {
 		Init.initializeVariable(expressionXInteger);
-		assert(XInteger.xIntegers.get("secondVar") instanceof XInteger);
-		assert(XInteger.xIntegers.get("secondVar").getName().equals(xInteger.getName()));
-		assert(XInteger.xIntegers.get("secondVar").getValue() == xInteger.getValue());
+		assert(((Variable) Variable.xVariables.get("secondVar")).getName().equals(xInteger.getName()));
+
+		//TODO: Assertion error (something went wrong) :/
+		assert(((Variable) Variable.xVariables.get("secondVar")).getValue() == (Integer) xInteger.getValue());
+	}
+
+	@Test
+	public void testCreatedVariable() {
+		Init.initializeVariable(expressionXString);
+		Init.initializeVariable(expressionXInteger);
+		assert(Init.isNameAvailable("firstVar") == false);
+		assert(Init.isNameAvailable("secondVar") == false);
+		assert(Init.isNameAvailable("thirdVar") == true);
 	}
 
 	@After
 	public void destroy() {
-		XString.xStrings.clear();
-		XInteger.xIntegers.clear();
+		Variable.xVariables.clear();
 	}
 }

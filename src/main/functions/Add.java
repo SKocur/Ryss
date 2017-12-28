@@ -1,7 +1,7 @@
 package main.functions;
 
 import main.exceptions.InvalidVariableNameError;
-import main.variables.XInteger;
+import main.variables.Variable;
 
 /**
  * <h1>Add</h1>
@@ -21,11 +21,11 @@ public class Add {
 	 * @see InvalidVariableNameError
 	 */
 	public static void calculate(String firstVar, String secondVar) throws InvalidVariableNameError {
-		XInteger var1 = XInteger.xIntegers.get(firstVar);
-		XInteger var2 = XInteger.xIntegers.get(secondVar);
+		Variable var1 = (Variable) Variable.xVariables.get(firstVar);
+		Variable var2 = (Variable) Variable.xVariables.get(secondVar);
 
 		if(var1 != null && var2 != null)
-			XInteger.xIntegers.put(firstVar, new XInteger(firstVar, var1.getValue() + var2.getValue()));
+			Variable.xVariables.put(firstVar, new Variable(firstVar, (Integer) var1.getValue() + (Integer) var2.getValue()));
 		else
 			throw new InvalidVariableNameError();
 	}
@@ -39,10 +39,10 @@ public class Add {
 	 * @see InvalidVariableNameError
 	 */
 	public static void calculate(String variable, int number) throws InvalidVariableNameError {
-		XInteger var1 = XInteger.xIntegers.get(variable);
+		Variable var1 = (Variable) Variable.xVariables.get(variable);
 
 		if(var1 != null)
-			XInteger.xIntegers.put(variable, new XInteger(variable, var1.getValue() + number));
+			Variable.xVariables.put(variable, new Variable(variable, (Integer) var1.getValue() + number));
 		else
 			throw new InvalidVariableNameError();
 	}

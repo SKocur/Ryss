@@ -1,13 +1,9 @@
 package test.variables;
 
 import org.junit.Test;
-
 import main.variables.Variable;
-import main.variables.Variables;
 
 public class VariableTest extends Variable {
-
-	Variable var;
 
 	public VariableTest() {
 		super("var1", "some text");
@@ -28,16 +24,6 @@ public class VariableTest extends Variable {
 		assert(Variable.isValidVariableName("bruh$") == false);
 		assert(Variable.isValidVariableName("Br5uh") == false);
 		assert(Variable.isValidVariableName("Br5uh8") == false);
-	}
-
-	@Test
-	public void testRecognizeVariableTypeXString() {
-		assert(Variable.recognize("\"bla bla\"") == Variables.XString);
-	}
-
-	@Test
-	public void testRecognizeVariableTypeXInteger() {
-		assert(Variable.recognize("123") == Variables.XInteger);
 	}
 
 	@Test

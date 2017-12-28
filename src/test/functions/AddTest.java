@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import main.exceptions.InvalidVariableNameError;
 import main.functions.Add;
-import main.variables.XInteger;
+import main.variables.Variable;
 
 import org.junit.Before;
 import org.junit.After;
@@ -13,10 +13,10 @@ public class AddTest {
 
 	@Before
 	public void init() {
-		XInteger xInteger = new XInteger("firstVar", 1);
-		XInteger.xIntegers.put(xInteger.getName(), xInteger);
-		xInteger = new XInteger("secondVar", -1);
-		XInteger.xIntegers.put(xInteger.getName(), xInteger);
+		Variable xInteger = new Variable("firstVar", 1);
+		Variable.xVariables.put(xInteger.getName(), xInteger);
+		xInteger = new Variable("secondVar", -1);
+		Variable.xVariables.put(xInteger.getName(), xInteger);
 	}
 
 	@Test
@@ -24,12 +24,12 @@ public class AddTest {
 		Add add = new Add();
 
 		try{
-			add.calculate(XInteger.xIntegers.get("firstVar").getName(), 2);
+			add.calculate(((Variable) Variable.xVariables.get("firstVar")).getName(), 2);
 		} catch(InvalidVariableNameError e){
 			System.out.println(e.toString());
 		}
 
-		assert(XInteger.xIntegers.get("firstVar").getValue() == 3);
+		assert((Integer) ((Variable) Variable.xVariables.get("firstVar")).getValue() == 3);
 	}
 
 	@Test
@@ -37,12 +37,12 @@ public class AddTest {
 		Add add = new Add();
 
 		try{
-			add.calculate(XInteger.xIntegers.get("firstVar").getName(), -1);
+			add.calculate(((Variable) Variable.xVariables.get("firstVar")).getName(), -1);
 		} catch(InvalidVariableNameError e){
 			System.out.println(e.toString());
 		}
 
-		assert(XInteger.xIntegers.get("firstVar").getValue() == 0);
+		assert((Integer) ((Variable) Variable.xVariables.get("firstVar")).getValue() == 0);
 	}
 
 	@Test
@@ -50,12 +50,12 @@ public class AddTest {
 		Add add = new Add();
 
 		try{
-			add.calculate(XInteger.xIntegers.get("secondVar").getName(), 2);
+			add.calculate(((Variable) Variable.xVariables.get("secondVar")).getName(), 2);
 		} catch(InvalidVariableNameError e){
 			System.out.println(e.toString());
 		}
 
-		assert(XInteger.xIntegers.get("secondVar").getValue() == 1);
+		assert((Integer) ((Variable) Variable.xVariables.get("secondVar")).getValue() == 1);
 	}
 
 	@Test
@@ -63,12 +63,12 @@ public class AddTest {
 		Add add = new Add();
 
 		try{
-			add.calculate(XInteger.xIntegers.get("secondVar").getName(), -2);
+			add.calculate(((Variable) Variable.xVariables.get("secondVar")).getName(), -2);
 		} catch(InvalidVariableNameError e){
 			System.out.println(e.toString());
 		}
 
-		assert(XInteger.xIntegers.get("secondVar").getValue() == -3);
+		assert((Integer) ((Variable) Variable.xVariables.get("secondVar")).getValue() == -3);
 	}
 
 	@Test
@@ -76,16 +76,16 @@ public class AddTest {
 		Add add = new Add();
 
 		try{
-			add.calculate(XInteger.xIntegers.get("firstVar").getName(), XInteger.xIntegers.get("secondVar").getName());
+			add.calculate(((Variable) Variable.xVariables.get("firstVar")).getName(), ((Variable) Variable.xVariables.get("secondVar")).getName());
 		} catch(InvalidVariableNameError e){
 			System.out.println(e.toString());
 		}
 
-		assert(XInteger.xIntegers.get("firstVar").getValue() == 0);
+		assert((Integer) ((Variable) Variable.xVariables.get("firstVar")).getValue() == 0);
 	}
 
 	@After
 	public void destroy(){
-		XInteger.xIntegers.clear();
+		Variable.xVariables.clear();
 	}
 }

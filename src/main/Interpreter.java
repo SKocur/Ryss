@@ -7,8 +7,7 @@ import main.exceptions.UnknownExpressionException;
 import main.functions.Add;
 import main.functions.Init;
 import main.functions.Log;
-import main.variables.XInteger;
-import main.variables.XString;
+import main.variables.Variable;
 
 /**
  * <h1>Interpreter</h1>
@@ -40,10 +39,8 @@ public class Interpreter {
 
 				switch(function) {
 					case "log":
-						if(XString.xStrings.get(functionParams) != null)
-							Log.execute(XString.xStrings.get(functionParams).getValue());
-						else if(XInteger.xIntegers.get(functionParams) != null)
-							Log.execute("" + XInteger.xIntegers.get(functionParams).getValue());
+						if(Variable.xVariables.get(functionParams) != null)
+							Log.execute("" + ((Variable) Variable.xVariables.get(functionParams)).getValue());
 						else
 							Log.execute(functionParams);
 						break;
@@ -53,9 +50,9 @@ public class Interpreter {
 					case "add":
 						try {
 							String[] variables = expression.split(" ", 3);
-							String var1 = XInteger.xIntegers.get(variables[1]).getName();
-							if(XInteger.xIntegers.get(variables[2]) != null)
-								Add.calculate(var1, XInteger.xIntegers.get(variables[2]).getName());
+							String var1 = ((Variable) Variable.xVariables.get(variables[1])).getName();
+							if(Variable.xVariables.get(variables[2]) != null)
+								Add.calculate(var1, ((Variable) Variable.xVariables.get(variables[2])).getName());
 							else
 								Add.calculate(var1, Integer.parseInt(variables[2]));
 						} catch (InvalidVariableNameError error){
