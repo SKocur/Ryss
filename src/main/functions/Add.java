@@ -1,6 +1,6 @@
 package main.functions;
 
-import main.exceptions.InvalidVariableNameError;
+import main.exceptions.InvalidVariableNameException;
 import main.variables.Variable;
 
 /**
@@ -17,17 +17,17 @@ public class Add {
 	 *
 	 * @param firstVar String - name of first variable
 	 * @param secondVar String - name of second variable
-	 * @throws InvalidVariableNameError When given variable's name doesn't exist.
-	 * @see InvalidVariableNameError
+	 * @throws InvalidVariableNameException When given variable's name doesn't exist.
+	 * @see InvalidVariableNameException
 	 */
-	public static void calculate(String firstVar, String secondVar) throws InvalidVariableNameError {
+	public static void calculate(String firstVar, String secondVar) throws InvalidVariableNameException {
 		Variable var1 = (Variable) Variable.xVariables.get(firstVar);
 		Variable var2 = (Variable) Variable.xVariables.get(secondVar);
 
 		if(var1 != null && var2 != null)
 			Variable.xVariables.put(firstVar, new Variable(firstVar, (Integer) var1.getValue() + (Integer) var2.getValue()));
 		else
-			throw new InvalidVariableNameError();
+			throw new InvalidVariableNameException();
 	}
 
 	/**
@@ -35,15 +35,15 @@ public class Add {
 	 *
 	 * @param variable String - name of variable
 	 * @param number int - numerical value
-	 * @throws InvalidVariableNameError When given variable's name doesn't exist.
-	 * @see InvalidVariableNameError
+	 * @throws InvalidVariableNameException When given variable's name doesn't exist.
+	 * @see InvalidVariableNameException
 	 */
-	public static void calculate(String variable, int number) throws InvalidVariableNameError {
+	public static void calculate(String variable, int number) throws InvalidVariableNameException {
 		Variable var1 = (Variable) Variable.xVariables.get(variable);
 
 		if(var1 != null)
 			Variable.xVariables.put(variable, new Variable(variable, (Integer) var1.getValue() + number));
 		else
-			throw new InvalidVariableNameError();
+			throw new InvalidVariableNameException();
 	}
 }

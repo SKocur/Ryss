@@ -30,21 +30,23 @@ public class Main {
 			File file = new File(args[0]);
 			Scanner scanner = new Scanner(file);
 
+
 			while(scanner.hasNext()) {
 				expressions.add(scanner.nextLine());
 				line++;
 			}
 
 			scanner.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("Cannot find .rx file with given name");
+		    System.exit(1);
+		}
 
+		try {
 			Interpreter interpreter = new Interpreter.InterpreterBuilder()
 					.commentPattern("//")
 					.build();
-			interpreter.scan(expressions);
-		} catch (FileNotFoundException e) {
-			System.out.println("Cannot find .rx file with given name");
-		} catch (UnknownExpressionException e) {
-			System.out.println("Unknown expression at line: " + line);
+			interpreter.scan(expressions);		} catch (UnknownExpressionException e) {				System.out.println("Unknown expression at line: " + line);
 		}
 	}
 }

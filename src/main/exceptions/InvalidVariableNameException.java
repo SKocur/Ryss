@@ -7,11 +7,11 @@ package main.exceptions;
  * @author Szymon Kocur
  *
  */
-public class InvalidVariableNameError extends Exception {
+public class InvalidVariableNameException extends Exception {
 
-	public InvalidVariableNameError() {}
+	public InvalidVariableNameException() {}
 
-	public InvalidVariableNameError(String message) {
+	public InvalidVariableNameException(String message) {
 		super(message);
 	}
 }

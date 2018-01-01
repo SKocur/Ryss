@@ -2,7 +2,7 @@ package test.functions;
 
 import org.junit.Test;
 
-import main.exceptions.InvalidVariableNameError;
+import main.exceptions.InvalidVariableNameException;
 import main.functions.Add;
 import main.variables.Variable;
 
@@ -25,7 +25,7 @@ public class AddTest {
 
 		try{
 			add.calculate(((Variable) Variable.xVariables.get("firstVar")).getName(), 2);
-		} catch(InvalidVariableNameError e){
+		} catch(InvalidVariableNameException e){
 			System.out.println(e.toString());
 		}
 
@@ -38,7 +38,7 @@ public class AddTest {
 
 		try{
 			add.calculate(((Variable) Variable.xVariables.get("firstVar")).getName(), -1);
-		} catch(InvalidVariableNameError e){
+		} catch(InvalidVariableNameException e){
 			System.out.println(e.toString());
 		}
 
@@ -51,7 +51,7 @@ public class AddTest {
 
 		try{
 			add.calculate(((Variable) Variable.xVariables.get("secondVar")).getName(), 2);
-		} catch(InvalidVariableNameError e){
+		} catch(InvalidVariableNameException e){
 			System.out.println(e.toString());
 		}
 
@@ -64,7 +64,7 @@ public class AddTest {
 
 		try{
 			add.calculate(((Variable) Variable.xVariables.get("secondVar")).getName(), -2);
-		} catch(InvalidVariableNameError e){
+		} catch(InvalidVariableNameException e){
 			System.out.println(e.toString());
 		}
 
@@ -77,7 +77,7 @@ public class AddTest {
 
 		try{
 			add.calculate(((Variable) Variable.xVariables.get("firstVar")).getName(), ((Variable) Variable.xVariables.get("secondVar")).getName());
-		} catch(InvalidVariableNameError e){
+		} catch(InvalidVariableNameException e){
 			System.out.println(e.toString());
 		}
 

@@ -2,7 +2,7 @@ package main;
 import java.util.*;
 import javax.swing.JOptionPane;
 
-import main.exceptions.InvalidVariableNameError;
+import main.exceptions.InvalidVariableNameException;
 import main.exceptions.UnknownExpressionException;
 import main.functions.Add;
 import main.functions.Init;
@@ -33,7 +33,7 @@ public class Interpreter {
 	 */
 	public void scan(List<String> expressions) throws UnknownExpressionException {
 		for(String expression : expressions) {
-			if(!expression.startsWith(commentPattern) && !expression.isEmpty()) {
+			if(shouldInterpret(expression)) {
 				String function = expression.substring(0, expression.indexOf(' '));
 				String functionParams = expression.substring(expression.indexOf(' ') + 1);
 
@@ -50,12 +50,12 @@ public class Interpreter {
 					case "add":
 						try {
 							String[] variables = expression.split(" ", 3);
-							String var1 = ((Variable) Variable.xVariables.get(variables[1])).getName();
+							String variable1 = ((Variable) Variable.xVariables.get(variables[1])).getName();
 							if(Variable.xVariables.get(variables[2]) != null)
-								Add.calculate(var1, ((Variable) Variable.xVariables.get(variables[2])).getName());
+								Add.calculate(variable1, ((Variable) Variable.xVariables.get(variables[2])).getName());
 							else
-								Add.calculate(var1, Integer.parseInt(variables[2]));
-						} catch (InvalidVariableNameError error){
+								Add.calculate(variable1, Integer.parseInt(variables[2]));
+						} catch (InvalidVariableNameException error){
 							System.out.println(error.toString());
 						}
 						break;
@@ -67,6 +67,16 @@ public class Interpreter {
 				}
 			}
 		}
+	}
+
+	/**
+	 * Checks if given expression can be executed.
+	 *
+	 * @param expression
+	 * @return true - if expression is valid within syntax rules
+	 */
+	private boolean shouldInterpret(String expression) {
+		return !expression.startsWith(commentPattern) && !expression.isEmpty();
 	}
 
 	/**
