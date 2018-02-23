@@ -21,9 +21,10 @@ public class Log {
 	 * @param text String - text to print
 	 */
 	public static void execute(String text) {
-		if(isValidStringValue(text))
+		if (isValidStringValue(text)) {
 			System.out.println(text.replace("\'", ""));
-		else if(isValidIntegerValue(text))
+		} else if (isValidIntegerValue(text)) {
 			System.out.println(Integer.parseInt(text));
+		}
 	}
 }

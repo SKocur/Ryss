@@ -20,8 +20,9 @@ public class Init {
 	 */
 	public static void initializeVariable(String expression) {
 		String[] variable = expression.split(" ", 3);
-		if(isValidVariableName(variable[1])) {
-			if(isNameAvailable(variable[1])){
+
+		if (isValidVariableName(variable[1])) {
+			if (isNameAvailable(variable[1])) {
 				Variable xVariable = new Variable(variable[1], variable[2]);
 				Variable.xVariables.put(variable[1], xVariable);
 			} else {

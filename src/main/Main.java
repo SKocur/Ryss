@@ -30,8 +30,7 @@ public class Main {
 			File file = new File(args[0]);
 			Scanner scanner = new Scanner(file);
 
-
-			while(scanner.hasNext()) {
+			while (scanner.hasNext()) {
 				expressions.add(scanner.nextLine());
 				line++;
 			}
@@ -42,11 +41,20 @@ public class Main {
 		    System.exit(1);
 		}
 
-		try {
-			Interpreter interpreter = new Interpreter.InterpreterBuilder()
-					.commentPattern("//")
-					.build();
-			interpreter.scan(expressions);		} catch (UnknownExpressionException e) {				System.out.println("Unknown expression at line: " + line);
-		}
+        Thread mainThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Interpreter interpreter = new Interpreter.InterpreterBuilder()
+                            .commentPattern("//")
+                            .build();
+                    interpreter.scan(expressions);
+                } catch (UnknownExpressionException e) {
+                        System.out.println("Unknown expression at line: " + line);
+                }
+            }
+        });
+
+        mainThread.start();
 	}
 }

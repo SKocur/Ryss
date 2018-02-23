@@ -32,17 +32,18 @@ public class Interpreter {
 	 * @see UnknownExpressionException
 	 */
 	public void scan(List<String> expressions) throws UnknownExpressionException {
-		for(String expression : expressions) {
-			if(shouldInterpret(expression)) {
+		for (String expression : expressions) {
+			if (shouldInterpret(expression)) {
 				String function = expression.substring(0, expression.indexOf(' '));
 				String functionParams = expression.substring(expression.indexOf(' ') + 1);
 
-				switch(function) {
+				switch (function) {
 					case "log":
-						if(Variable.xVariables.get(functionParams) != null)
+						if (Variable.xVariables.get(functionParams) != null) {
 							Log.execute("" + ((Variable) Variable.xVariables.get(functionParams)).getValue());
-						else
+						} else {
 							Log.execute(functionParams);
+						}
 						break;
 					case "init":
 						Init.initializeVariable(expression);
@@ -51,16 +52,23 @@ public class Interpreter {
 						try {
 							String[] variables = expression.split(" ", 3);
 							String variable1 = ((Variable) Variable.xVariables.get(variables[1])).getName();
-							if(Variable.xVariables.get(variables[2]) != null)
+							if (Variable.xVariables.get(variables[2]) != null) {
 								Add.calculate(variable1, ((Variable) Variable.xVariables.get(variables[2])).getName());
-							else
+							} else {
 								Add.calculate(variable1, Integer.parseInt(variables[2]));
-						} catch (InvalidVariableNameException error){
+							}
+						} catch (InvalidVariableNameException error) {
 							System.out.println(error.toString());
 						}
 						break;
 					case "MsgBox":
-						JOptionPane.showMessageDialog(null, functionParams);
+					    Thread msgBoxThread = new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                JOptionPane.showMessageDialog(null, functionParams);
+                            }
+					    });
+					    msgBoxThread.start();
 						break;
 					default:
 						throw new UnknownExpressionException();

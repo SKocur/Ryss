@@ -23,9 +23,9 @@ public class AddTest {
 	public void testAddPositiveVariableToPositiveNumber(){
 		Add add = new Add();
 
-		try{
+		try {
 			add.calculate(((Variable) Variable.xVariables.get("firstVar")).getName(), 2);
-		} catch(InvalidVariableNameException e){
+		} catch (InvalidVariableNameException e) {
 			System.out.println(e.toString());
 		}
 
@@ -36,9 +36,9 @@ public class AddTest {
 	public void testAddPositiveVariableToNegativeNumber(){
 		Add add = new Add();
 
-		try{
+		try {
 			add.calculate(((Variable) Variable.xVariables.get("firstVar")).getName(), -1);
-		} catch(InvalidVariableNameException e){
+		} catch (InvalidVariableNameException e) {
 			System.out.println(e.toString());
 		}
 
@@ -49,9 +49,9 @@ public class AddTest {
 	public void testAddNegativeVariableToPositiveNumber(){
 		Add add = new Add();
 
-		try{
+		try {
 			add.calculate(((Variable) Variable.xVariables.get("secondVar")).getName(), 2);
-		} catch(InvalidVariableNameException e){
+		} catch (InvalidVariableNameException e) {
 			System.out.println(e.toString());
 		}
 
@@ -62,9 +62,9 @@ public class AddTest {
 	public void testAddNegativeVariableToNegativeNumber(){
 		Add add = new Add();
 
-		try{
+		try {
 			add.calculate(((Variable) Variable.xVariables.get("secondVar")).getName(), -2);
-		} catch(InvalidVariableNameException e){
+		} catch (InvalidVariableNameException e) {
 			System.out.println(e.toString());
 		}
 
@@ -75,9 +75,9 @@ public class AddTest {
 	public void testAddPositiveVariableToNegativeVariable(){
 		Add add = new Add();
 
-		try{
+		try {
 			add.calculate(((Variable) Variable.xVariables.get("firstVar")).getName(), ((Variable) Variable.xVariables.get("secondVar")).getName());
-		} catch(InvalidVariableNameException e){
+		} catch (InvalidVariableNameException e) {
 			System.out.println(e.toString());
 		}
 

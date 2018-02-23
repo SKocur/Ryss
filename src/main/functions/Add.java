@@ -24,10 +24,11 @@ public class Add {
 		Variable var1 = (Variable) Variable.xVariables.get(firstVar);
 		Variable var2 = (Variable) Variable.xVariables.get(secondVar);
 
-		if(var1 != null && var2 != null)
+		if (var1 != null && var2 != null) {
 			Variable.xVariables.put(firstVar, new Variable(firstVar, (Integer) var1.getValue() + (Integer) var2.getValue()));
-		else
+		} else {
 			throw new InvalidVariableNameException();
+		}
 	}
 
 	/**
@@ -41,9 +42,10 @@ public class Add {
 	public static void calculate(String variable, int number) throws InvalidVariableNameException {
 		Variable var1 = (Variable) Variable.xVariables.get(variable);
 
-		if(var1 != null)
+		if (var1 != null) {
 			Variable.xVariables.put(variable, new Variable(variable, (Integer) var1.getValue() + number));
-		else
+		} else {
 			throw new InvalidVariableNameException();
+		}
 	}
 }
