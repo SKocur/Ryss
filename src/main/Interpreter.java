@@ -81,7 +81,7 @@ public class Interpreter {
 	 * Checks if given expression can be executed.
 	 *
 	 * @param expression
-	 * @return true - if expression is valid within syntax rules
+	 * @return true If expression is valid within syntax rules
 	 */
 	private boolean shouldInterpret(String expression) {
 		return !expression.startsWith(commentPattern) && !expression.isEmpty();
@@ -100,7 +100,7 @@ public class Interpreter {
 		/**
 		 * This method sets pattern for comments. Expression which starts with this pattern will be ignored.
 		 *
-		 * @param commentPattern
+		 * @param commentPattern Pattern which will be escaped by interpreter.
 		 * @return InterpreterBuilder
 		 */
 		public InterpreterBuilder commentPattern(String commentPattern) {
