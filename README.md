@@ -1,7 +1,9 @@
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/SKocur/Ryss)
 
 # Ryss
-Ryss is programming language with syntax inspired by Assembly.
+Ryss is programming language with syntax inspired by Assembly. Execution process takes place in separated threads, different thread is for GUI (Graphical User Interface) elements and different for console tasks. There are some debugging options passed as a paremeters to Ryss interpreter, which can be enabled at startup:
+* `-verbose:avmemory` displays available memory
+* `-verbose:maxmemory` displays total memory
 
 ### Simple "Hello World" program:
 #### First option:
