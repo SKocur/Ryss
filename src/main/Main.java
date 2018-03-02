@@ -12,6 +12,7 @@ import java.io.FileNotFoundException;
  * @author Szymon Kocur
  */
 public class Main {
+
 	private static List<String> expressions = new ArrayList<String>();
 	private static List<String> params = new ArrayList<String>();
 	private static int line = 0;

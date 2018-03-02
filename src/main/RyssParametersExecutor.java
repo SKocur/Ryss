@@ -10,6 +10,7 @@ import java.util.List;
  * @author Szymon Kocur
  */
 public class RyssParametersExecutor {
+
     private List<String> params = new ArrayList<String>();
 
     public RyssParametersExecutor(List<String> params) {
@@ -46,6 +47,7 @@ public class RyssParametersExecutor {
      * @author Szymon Kocur
      */
     private class Verbose {
+
         String method;
 
         public Verbose(String method) {

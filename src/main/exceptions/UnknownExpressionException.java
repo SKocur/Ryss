@@ -8,6 +8,7 @@ package main.exceptions;
  *
  */
 public class UnknownExpressionException extends Exception {
+
 	public UnknownExpressionException() {}
 
 	public UnknownExpressionException(String message){

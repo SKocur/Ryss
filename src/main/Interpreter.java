@@ -95,6 +95,7 @@ public class Interpreter {
 	 * @see Interpreter
 	 */
 	public static class InterpreterBuilder {
+
 		private String nestedCommentPattern;
 
 		/**
